@@ -1,6 +1,7 @@
 # es6-requireindex
 Helper to require() directories with es6 support.
 
+
 ### Usage
 
 ```js
@@ -19,6 +20,7 @@ module.exports = requireIndex(somedir, {
 });
 ```
 
+
 ### Options
 - recursive (Default: true)
 
@@ -27,5 +29,12 @@ If 'true', will require recursively through folders.
 - requireES6Defaults (Default: true)
 
 if 'true', will require the 'default' property of the required module, and when 'false', will require the whole exported object. This is helpful for es6 moduples, where you can export a default object, because a es5-styled require will get the whole module, which has the default export in a property called 'default'.
+
+
+### Tests
+
+```
+npm test
+```
 
 Cheers.
