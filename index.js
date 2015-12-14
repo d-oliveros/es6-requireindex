@@ -47,9 +47,14 @@ module.exports = function requireDirectory(dir, opts) {
 
       else if (!isLink && isFile && isJS) {
         var entityName = camelcase(filename.replace('.js', ''));
+
+        // Conserve the capitalization of the first char
+        entityName = filename[0] + entityName.substring(1);
+
+        // Require the file
         modules[entityName] = require(filePath);
 
-        //
+        // Check if the expoted object has a es6-styled default export
         var hasES6Default = typeof modules[entityName] === 'object'
           && modules[entityName].hasOwnProperty('default')
           && typeof modules[entityName].default === 'function';

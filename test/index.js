@@ -5,14 +5,14 @@ var expect = require('chai').expect;
 var expectedStructure = [
   'index',
   'mockFile',
-  'mockFile2',
+  'MockFile2',
   'mockFile3'
 ];
 
 var expectedStructureRecursive = [
   'index',
   'mockFile',
-  'mockFile2',
+  'MockFile2',
   'mockFile3',
   'folder'
 ];
