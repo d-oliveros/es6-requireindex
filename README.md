@@ -30,7 +30,7 @@ If 'true', will require recursively through folders.
 
 - requireES6Defaults (Default: true)
 
-if 'true', will require the 'default' property of the required module, and when 'false', will require the whole exported object. This is helpful for es6 moduples, where you can export a default object, because a es5-styled require will get the whole module, which has the default export in a property called 'default'.
+if 'true', will require the 'default' property of the required module, and when 'false', will require the whole exported object. This is helpful for es6 modules, where you can export a default object, because a es5-styled require will get the whole module, which has the default export in a property called 'default'.
 
 
 ### Tests
