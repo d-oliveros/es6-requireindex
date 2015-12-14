@@ -1,5 +1,7 @@
 # es6-requireindex
-Helper to require() directories with es6 support.
+Requires the modules in a directory, with support for es6-style exports (aka `export default`). 
+
+If a module exports a default object, requireIndex will expose the default object as the module's export (instead of exposing an object with the `default` property referencing the es6 default export).
 
 
 ### Usage
