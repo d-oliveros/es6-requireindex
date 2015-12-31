@@ -1,6 +1,6 @@
 {
   "name": "es6-requireindex",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Helper to require() directories with es6 support.",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,9 @@
     "requireindex",
     "folder"
   ],
+  "browser": {
+    "./index.js": "./browser.js"
+  },
   "author": "David Oliveros",
   "license": "MIT",
   "bugs": {
