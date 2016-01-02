@@ -46,7 +46,7 @@ module.exports = function requireDirectory(dir, opts) {
       }
 
       else if (!isLink && isFile && isJS) {
-        var entityName = camelcase(filename.replace('.js', ''));
+        var entityName = camelcase(filename.substr(0, filename.indexOf('.')));
 
         // Conserve the capitalization of the first char
         entityName = filename[0] + entityName.substring(1);
