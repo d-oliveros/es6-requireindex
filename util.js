@@ -22,11 +22,21 @@ function getExport(mod) {
   return ret;
 }
 
+/**
+ * Gets the module name based on a file path.
+ * @param  {String}  filepath  Path to a file.
+ * @return {String}            Camelcase formatted module name.
+ */
 function getModuleName(filepath) {
   var parts = filepath.split('/');
   var filename = parts[parts.length - 1];
 
-  return camelcase(filename.substr(0, filename.indexOf('.')));
+  var name = camelcase(filename.substr(0, filename.indexOf('.')));
+
+  // Conserve the capitalization of the first char
+  name = filename[0] + name.substring(1);
+
+  return name;
 }
 
 /**

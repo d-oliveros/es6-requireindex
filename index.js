@@ -48,9 +48,6 @@ module.exports = function requireDirectory(dir, opts) {
       else if (!isLink && isFile && isJS) {
         var entityName = util.getModuleName(filename);
 
-        // Conserve the capitalization of the first char
-        entityName = filename[0] + entityName.substring(1);
-
         // Require the file
         mods[entityName] = require(filePath);
 

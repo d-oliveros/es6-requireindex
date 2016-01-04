@@ -1,5 +1,5 @@
 # es6-requireindex
-Requires the modules in a directory, with support for es6-style exports (aka `export default`). 
+Requires the modules in a directory, with support for es6-style exports (aka `export default`), and the browser via webpack.
 
 If a module exports a default object, requireIndex will expose the default object as the module's export (instead of exposing an object with the `default` property referencing the es6 default export).
 
@@ -20,6 +20,25 @@ module.exports = requireIndex(somedir, {
   recursive: true|false, // Default: true
   requireES6Defaults: true|false // Default: true
 });
+```
+
+If you want to use it with webpack to require a folder, you must do:
+
+```js
+var ctx = require.context(__dirname, true, /^(.*\.((js|jsx)$))[^.]*$/igm);
+module.exports = requireIndex(ctx, [opts]);
+```
+
+To requiring all the files in a folder from server-side code and browser-side code with webpack, you can do:
+
+```js
+var ctx;
+
+try {
+  ctx = require.context(__dirname, true, /^(.*\.((js|jsx)$))[^.]*$/igm);
+} catch (err) {}
+
+module.exports = requireIndex(ctx);
 ```
 
 
