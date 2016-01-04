@@ -29,7 +29,7 @@ var ctx = require.context(__dirname, true, /^(.*\.((js|jsx)$))[^.]*$/igm);
 module.exports = requireIndex(ctx, [opts]);
 ```
 
-To requiring all the files in a folder from server-side code and browser-side code with webpack, you can do:
+To require all the files in a folder in an isomorphic fashion (eg with browser and server support), you can do:
 
 ```js
 var ctx;
