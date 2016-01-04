@@ -1,37 +1,86 @@
 {
-  "name": "es6-requireindex",
-  "version": "0.3.1",
-  "description": "Helper to require() directories with es6 support.",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha",
-    "lint": "eslint ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/d-oliveros/es6-requireindex.git"
-  },
-  "keywords": [
-    "require",
-    "directory",
-    "requireindex",
-    "folder"
+  "_args": [
+    [
+      "es6-requireindex@^0.3.1",
+      "/Users/david/git/isomorphic-todomvc"
+    ]
   ],
+  "_from": "es6-requireindex@>=0.3.1 <0.4.0",
+  "_id": "es6-requireindex@0.3.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/es6-requireindex",
+  "_nodeVersion": "5.3.0",
+  "_npmUser": {
+    "email": "dato.oliveros@gmail.com",
+    "name": "d-oliveros"
+  },
+  "_npmVersion": "3.3.12",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "es6-requireindex",
+    "raw": "es6-requireindex@^0.3.1",
+    "rawSpec": "^0.3.1",
+    "scope": null,
+    "spec": ">=0.3.1 <0.4.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_shasum": "7d7b4876415b732ce731b20377b7299160674b9c",
+  "_shrinkwrap": null,
+  "_spec": "es6-requireindex@^0.3.1",
+  "_where": "/Users/david/git/isomorphic-todomvc",
+  "author": {
+    "name": "David Oliveros"
+  },
   "browser": {
     "./index.js": "./browser.js"
   },
-  "author": "David Oliveros",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/d-oliveros/es6-requireindex/issues"
   },
-  "homepage": "https://github.com/d-oliveros/es6-requireindex#readme",
   "dependencies": {
     "camelcase": "^2.0.1"
   },
+  "description": "Helper to require() directories with es6 support.",
   "devDependencies": {
     "chai": "^3.4.1",
     "eslint": "^1.10.3",
     "mocha": "^2.3.4"
-  }
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "7d7b4876415b732ce731b20377b7299160674b9c",
+    "tarball": "http://registry.npmjs.org/es6-requireindex/-/es6-requireindex-0.3.1.tgz"
+  },
+  "gitHead": "c41d1c0dbaadf09fbaa5595c0c9a26447a6474aa",
+  "homepage": "https://github.com/d-oliveros/es6-requireindex#readme",
+  "keywords": [
+    "directory",
+    "folder",
+    "require",
+    "requireindex"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "d-oliveros",
+      "email": "dato.oliveros@gmail.com"
+    }
+  ],
+  "name": "es6-requireindex",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-oliveros/es6-requireindex.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha"
+  },
+  "version": "0.3.1"
 }

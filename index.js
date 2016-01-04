@@ -1,6 +1,6 @@
 var fs = require('fs');
 var path = require('path');
-var camelcase = require('camelcase');
+var util = require('./util');
 
 /**
  * Requires the modules in the specified 'dir'.
@@ -27,9 +27,9 @@ var camelcase = require('camelcase');
 module.exports = function requireDirectory(dir, opts) {
   if (!dir) dir = getCallerDirname();
 
-  opts = withDefaults(opts);
+  opts = util.withDefaults(opts);
 
-  var modules = {};
+  var mods = {};
 
   fs
     .readdirSync(dir)
@@ -42,51 +42,27 @@ module.exports = function requireDirectory(dir, opts) {
       var isJS = filename.indexOf('.js') > -1;
 
       if (!isLink && isDir && opts.recursive) {
-        modules[filename] = requireDirectory(filePath);
+        mods[filename] = requireDirectory(filePath);
       }
 
       else if (!isLink && isFile && isJS) {
-        var entityName = camelcase(filename.substr(0, filename.indexOf('.')));
+        var entityName = util.getModuleName(filename);
 
         // Conserve the capitalization of the first char
         entityName = filename[0] + entityName.substring(1);
 
         // Require the file
-        modules[entityName] = require(filePath);
+        mods[entityName] = require(filePath);
 
-        // Check if the expoted object has a es6-styled default export
-        var hasES6Default = typeof modules[entityName] === 'object'
-          && modules[entityName].hasOwnProperty('default')
-          && typeof modules[entityName].default === 'function';
-
-        if (hasES6Default && opts.requireES6Defaults) {
-          modules[entityName] = modules[entityName].default;
+        // Check if the exported object has a es6-styled default export
+        if (opts.requireES6Defaults) {
+          mods[entityName] = util.getExport(mods[entityName]);
         }
       }
     });
 
-  return modules;
+  return mods;
 };
-
-/**
- * Builds the options object and set the defaults.
- *
- * @param  {Object}  opts  Options object.
- * @return {Object}        Options object with defaults.
- */
-function withDefaults(opts) {
-  opts = opts || {};
-
-  return {
-    recursive: typeof opts.recursive === 'boolean'
-      ? opts.recursive
-      : true,
-
-    requireES6Defaults: typeof opts.requireES6Defaults === 'boolean'
-      ? opts.requireES6Defaults
-      : true
-  };
-}
 
 /**
  * Gets the dirname of the caller function that is calling this method.
