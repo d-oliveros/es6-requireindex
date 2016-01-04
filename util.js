@@ -13,7 +13,7 @@ function getExport(mod) {
 
   var hasES6Default = typeof mod === 'object'
     && mod.hasOwnProperty('default')
-    && typeof mod.default === 'function';
+    && !!mod.default;
 
   if (hasES6Default) {
     ret = mod.default;

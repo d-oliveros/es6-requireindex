@@ -42,7 +42,7 @@ module.exports = function requireDirectory(dir, opts) {
       var isJS = filename.indexOf('.js') > -1;
 
       if (!isLink && isDir && opts.recursive) {
-        mods[filename] = requireDirectory(filePath);
+        mods[filename] = requireDirectory(filePath, opts);
       }
 
       else if (!isLink && isFile && isJS) {

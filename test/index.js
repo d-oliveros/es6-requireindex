@@ -46,7 +46,7 @@ describe('requireIndex', function() {
       requireES6Defaults: true
     });
 
-    expect(modules.mockFile3).to.be.a('function');
+    expect(modules.mockFile3).to.be.an('object').with.property('oneThing').which.is.a('function');
 
   });
 
