@@ -1,4 +1,3 @@
-var camelcase = require('camelcase');
 var util = require('./util');
 
 module.exports = function requireFromWebpackContext(ctx, opts) {
@@ -27,12 +26,11 @@ function setIn(mod, mods, filename, recursive) {
   var modName;
 
   if (isDirPart && recursive) {
-    modName = parts[0];
+    modName = util.getModuleName(parts[0]);
     mods[modName] = mods[modName] || {};
     setIn(mod, mods[modName], parts.slice(1).join('/'));
   } else if (!isDirPart) {
-    modName = parts[parts.length - 1];
-    modName = camelcase(modName.substr(0, modName.indexOf('.')));
+    modName = util.getModuleName(filename);
     mods[modName] = mod;
   }
 }

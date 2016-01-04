@@ -46,14 +46,14 @@ module.exports = function requireDirectory(dir, opts) {
       }
 
       else if (!isLink && isFile && isJS) {
-        var entityName = util.getModuleName(filename);
+        var modName = util.getModuleName(filename);
 
         // Require the file
-        mods[entityName] = require(filePath);
+        mods[modName] = require(filePath);
 
         // Check if the exported object has a es6-styled default export
         if (opts.requireES6Defaults) {
-          mods[entityName] = util.getExport(mods[entityName]);
+          mods[modName] = util.getExport(mods[modName]);
         }
       }
     });
