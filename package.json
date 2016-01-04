@@ -1,6 +1,6 @@
 {
   "name": "es6-requireindex",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Helper to require() directories with browser and es6 support",
   "main": "index.js",
   "scripts": {
