@@ -6,13 +6,6 @@ var expectedStructure = [
   'index',
   'mockFile',
   'MockFile2',
-  'mockFile3'
-];
-
-var expectedStructureRecursive = [
-  'index',
-  'mockFile',
-  'MockFile2',
   'mockFile3',
   'folder'
 ];
@@ -30,7 +23,6 @@ describe('requireIndex', function() {
     });
 
     checkIfRequiredCorrectly(modules, true);
-    expect(modules.folder.thing).to.be.a('function');
   });
 
   it('should not require recursively', function() {
@@ -39,6 +31,8 @@ describe('requireIndex', function() {
     });
 
     checkIfRequiredCorrectly(modules);
+
+    expect(modules.folder.thing).to.not.be.a('function');
   });
 
   it('should require es6 defaults', function() {
@@ -46,8 +40,8 @@ describe('requireIndex', function() {
       requireES6Defaults: true
     });
 
-    expect(modules.mockFile3).to.be.an('object').with.property('oneThing').which.is.a('function');
-
+    expect(modules.mockFile3).to.be.an('object')
+      .with.property('oneThing').which.is.a('function');
   });
 
   it('should not require es6 defaults', function() {
@@ -60,6 +54,13 @@ describe('requireIndex', function() {
 });
 
 function checkIfRequiredCorrectly(mods, recursive) {
-  var expectedKeys = recursive ? expectedStructureRecursive : expectedStructure;
-  expect(mods).to.be.an('object').with.keys(expectedKeys);
+  expect(mods).to.be.an('object').with.keys(expectedStructure);
+
+  if (recursive) {
+    expect(mods.folder).to.be.an('object')
+      .with.property('thing').which.is.a('function');
+  } else {
+    expect(mods.folder).to.be.an('object');
+    expect(mods.folder).to.not.have.property('thing');
+  }
 }

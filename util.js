@@ -31,7 +31,11 @@ function getModuleName(filepath) {
   var parts = filepath.split('/');
   var filename = parts[parts.length - 1];
 
-  var name = camelcase(filename.substr(0, filename.indexOf('.')));
+  if (filename.indexOf('.') > -1) {
+    filename = filename.substr(0, filename.indexOf('.'));
+  }
+
+  var name = camelcase(filename);
 
   // Conserve the capitalization of the first char
   name = filename[0] + name.substring(1);

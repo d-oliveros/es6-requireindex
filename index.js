@@ -41,11 +41,13 @@ module.exports = function requireDirectory(dir, opts) {
       var isFile = Stats.isFile();
       var isJS = filename.indexOf('.js') > -1;
 
-      if (!isLink && isDir && opts.recursive) {
+      if (isLink) return;
+
+      if (isDir && opts.recursive) {
         mods[filename] = requireDirectory(filePath, opts);
       }
 
-      else if (!isLink && isFile && isJS) {
+      else if (isDir || (isFile && isJS)) {
         var modName = util.getModuleName(filename);
 
         // Require the file
