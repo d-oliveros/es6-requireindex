@@ -14,6 +14,11 @@ module.exports = function requireFromWebpackContext(ctx, opts) {
     }
 
     var filepath = filename.replace('./', '');
+
+    if (filepath === 'index.js') {
+      return;
+    }
+
     setIn(mod, mods, filepath, opts.recursive);
   });
 

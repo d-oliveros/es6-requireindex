@@ -3,7 +3,6 @@ var requireIndex = require('../index');
 var expect = require('chai').expect;
 
 var expectedStructure = [
-  'index',
   'mockFile',
   'MockFile2',
   'mockFile3',
