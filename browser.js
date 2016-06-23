@@ -28,14 +28,16 @@ module.exports = function requireFromWebpackContext(ctx, opts) {
 function setIn(mod, mods, filename, recursive) {
   var parts = filename.split('/');
   var isDirPart = parts.length > 1;
-  var modName;
+  var modName = util.getModuleName(parts[0]);
 
+  // if filename is nested and the recursive flag is on
   if (isDirPart && recursive) {
-    modName = util.getModuleName(parts[0]);
     mods[modName] = mods[modName] || {};
     setIn(mod, mods[modName], parts.slice(1).join('/'));
-  } else if (!isDirPart) {
-    modName = util.getModuleName(filename);
+  } else if (!isDirPart || parts[1] === 'index.js') {
+    // filename is in root level, no directory or recursion needed
+    // or filename is in directory, but is index file
+    modName = util.getModuleName(parts[0]);
     mods[modName] = mod;
   }
 }

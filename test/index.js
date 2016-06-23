@@ -9,7 +9,7 @@ var expectedStructure = [
   'folder'
 ];
 
-describe('requireIndex', function() {
+describe('Server-side requireIndex', function() {
 
   it('should require using the caller\'s path', function() {
     var modules = require('./mockDirectory');
